@@ -190,7 +190,7 @@ class KiwiPlot(pg.PlotWidget):
 
         #Curve names were defined during plotting
         if legend_list is None: 
-            logger.debug('Creating legend using name property')
+            # logger.debug('Creating legend using name property')
             for curve in self.plot_item.curves: #Use default names
                 name = curve.name()
                 if name is None:
@@ -385,7 +385,6 @@ class KiwiPlot(pg.PlotWidget):
 
         # self.cursor_list.append(cursor)
         cursor.show() #add cursor and cursor dots to self.plot_item
-        logger.debug('Cursor added')
         self.cursor = cursor 
 
         #This works - The label itself is a TextItem

@@ -333,7 +333,7 @@ class InfLineLabel(TextItem):
         # self.setAnchor(self.anchors[1]) #set to left of line
         self.setAnchor(self.anchors[0]) #set to right of line
         self.valueChanged()
-
+        self.setPosition(position)
 
     def set_left(self, isLeft):
         '''

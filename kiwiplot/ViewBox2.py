@@ -77,7 +77,7 @@ class ViewBox2(ViewBox):
         if ev.button() & (Qt.LeftButton | Qt.MiddleButton):
             if self.state['mouseMode'] == ViewBox.RectMode and axis is None:
                 if ev.isFinish():  ## This is the final move in the drag; change the view scale now
-                    logger.debug('Zoom finish')
+                    # logger.debug('Zoom finish')
                     self.start_pos = None
                     self.rbScaleBox.hide()
                     _p1 = self.start_point
@@ -129,7 +129,7 @@ class ViewBox2(ViewBox):
                         ax = QRectF(p1, p2)
                         ax = self.childGroup.mapRectFromParent(ax)
                     
-                    logger.debug('ax: {}'.format(ax))
+                    # logger.debug('ax: {}'.format(ax))
                     self.showAxRect(ax, padding=0) #apply zoom
                     self.axHistoryPointer += 1
                     self.axHistory = self.axHistory[:self.axHistoryPointer] + [ax]
@@ -155,11 +155,11 @@ class ViewBox2(ViewBox):
                         if abs(dx) > abs(dy):
                             if self._zoomMode != ZOOM_MODE.xZoom:
                                 self._zoomMode = ZOOM_MODE.xZoom
-                                logger.debug('Setting ZOOM_MODE.xZoom')
+                                # logger.debug('Setting ZOOM_MODE.xZoom')
                         else:
                             if self._zoomMode != ZOOM_MODE.yZoom:
                                 self._zoomMode = ZOOM_MODE.yZoom
-                                logger.debug('Setting ZOOM_MODE.yZoom')
+                                # logger.debug('Setting ZOOM_MODE.yZoom')
                             
                     ## update the zoom rectangle
 #                     self.updateScaleBox(ev.buttonDownPos(), ev.pos()) #Original

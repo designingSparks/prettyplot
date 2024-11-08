@@ -38,13 +38,17 @@ class MainWindow(QMainWindow):
 
 
     def add_cursor_labels(self):
-        # labelOpts1={'position':0.03, 'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200), 'movable': True} #bottom
-        labelOpts1={'position':0.03, 'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)}
-        labelOpts2={'position':0.04, 'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)}
+        #Note on anchors for vline: [(x pos, ypos), (xx, xx)] xpos=1: label left, xpos=0, label right
+        labelOpts_v1={'position':0.0, 'anchors': [(0, 1), (1, 0)],'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)} #bottom right of vline
+        # labelOpts_v1={'position':0.0, 'anchors': [(1, 1), (1, 0)],'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)} #bottom left of vline
+        labelOpts_v2={'position': 1, 'anchors': [(0, 0), (0, 0)],'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)} #top right of vline
+        # labelOpts_v2={'position': 1, 'anchors': [(1, 0), (0, 0)],'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)} #top left of vline
+        labelOpts2={'position':0.0, 'anchors':[(-0.02,0), (-0.02,1)], 'color': 'w', 'fill': (0x1F, 0x77, 0xB4, 200)}
         format1 = lambda x: f'{x:.2f}'
         # format2 = lambda x: f'{x:.3f}'
         format2 = lambda x: f'{round(x)}'
-        self.plotwidget1.cursor.add_label('', format1, labelOpts1) #cursor label is in bottom left
+        self.plotwidget1.cursor.add_label('', format1, labelOpts_v1) #cursor label is in bottom left
+        self.plotwidget1.cursor.add_label('', format1, labelOpts_v2) #cursor label is in bottom left
         self.plotwidget1.hcursor.add_label('', format2, labelOpts2)
         # self.plotwidget1.cursor.labels[0].set_left(True) #alternative positioning
         # self.plotwidget1.hcursor.labels[0].set_below(True)
